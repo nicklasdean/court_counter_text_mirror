@@ -17,9 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+
 @Composable
-fun CourtCounter(modifier: Modifier = Modifier){
-    val myCounterViewModel : CounterViewModel = viewModel();
+fun CourtCounter(modifier: Modifier = Modifier) {
+    val myCounterViewModel: CounterViewModel = viewModel();
 
     Column {
         Row {
