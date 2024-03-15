@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("myapplication")
+                    CourtCounter();
                 }
             }
         }
@@ -30,11 +30,54 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun CourtCounter(modifier: Modifier = Modifier){
+    var count: Int by remember{ mutableIntStateOf(0) }
+
+    Column {
+        Row {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(0.6f)
+                    .fillMaxWidth(0.5f)
+                    .border(2.dp, color = Color.Black),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    fontSize = 50.sp,
+                    text = count.toString()
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(0.6f)
+                    .fillMaxWidth()
+                    .border(2.dp, color = Color.Black),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    fontSize = 50.sp,
+                    text = count.toString()
+                )
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly,
+
+            ) {
+            Button(modifier = Modifier.width(100.dp),
+                onClick = {
+                    count ++;
+
+                }) {
+                Text("+1");
+            }
+        }
+
+    }
 }
 
 @Preview(showBackground = true)

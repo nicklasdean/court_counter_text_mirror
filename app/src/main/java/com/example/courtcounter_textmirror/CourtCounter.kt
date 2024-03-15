@@ -11,19 +11,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun CourtCounter(modifier: Modifier = Modifier){
-    var count: Int by remember{ mutableIntStateOf(0) }
+    val myCounterViewModel : CounterViewModel = viewModel();
 
     Column {
         Row {
@@ -36,7 +32,7 @@ fun CourtCounter(modifier: Modifier = Modifier){
             ) {
                 Text(
                     fontSize = 50.sp,
-                    text = count.toString()
+                    text = myCounterViewModel.count.toString()
                 )
             }
             Box(
@@ -48,7 +44,7 @@ fun CourtCounter(modifier: Modifier = Modifier){
             ) {
                 Text(
                     fontSize = 50.sp,
-                    text = count.toString()
+                    text = myCounterViewModel.count.toString()
                 )
             }
         }
@@ -62,8 +58,7 @@ fun CourtCounter(modifier: Modifier = Modifier){
             ) {
             Button(modifier = Modifier.width(100.dp),
                 onClick = {
-                    count ++;
-
+                    myCounterViewModel.incrementScore()
                 }) {
                 Text("+1");
             }

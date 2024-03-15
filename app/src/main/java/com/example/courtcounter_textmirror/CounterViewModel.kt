@@ -7,5 +7,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel : ViewModel() {
+    var count: Int by mutableIntStateOf(0);
 
+    fun incrementScore(): Unit{
+        count ++;
+    }
 }
